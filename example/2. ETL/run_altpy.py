@@ -1,25 +1,24 @@
 #!/usr/bin/python
 
 import altpy as ap
-import pandas as pd
 import numpy as np
 
 #############
 # Load data #
 #############
 
-#data_inflation = ap.inputdata('csv','../1. Data/inflation.csv',',')
 data_inflation = ap.inputdata('xlsx','../1. Data/inflation.xlsx','Sheet2')
-#data_immo = ap.inputdata('xlsx','../1. Data/immo_data_light.xlsx','immo_light')
 data_immo = ap.inputdata('xlsx','../1. Data/immo_data.xlsx','immo_by_municipality_2010-2019')
+#data_inflation = ap.inputdata('csv','../1. Data/inflation.csv',',')
+#data_immo = ap.inputdata('xlsx','../1. Data/immo_data_light.xlsx','immo_light')
 
 
 ################
 # Display data #
 ################
 
-#ap.browse(data_inflation,'2')
-#ap.browse(data_immo,'5')
+ap.browse(data_inflation,'2')
+ap.browse(data_immo,'5')
 
 ###############
 # Select data #
@@ -27,19 +26,6 @@ data_immo = ap.inputdata('xlsx','../1. Data/immo_data.xlsx','immo_by_municipalit
 
 # Inflation data #
 ##################
-
-# TEST #
-#ap.select(data_inflation,'display','n/a','n/a')
-#data_inflation2 = ap.select(data_inflation,'rename','Year - 2011','2011')
-#ap.select(data_inflation2,'display','n/a','n/a')
-#data_inflation2 = ap.select(data_inflation2,'retype','Year - 2012','text')
-#ap.select(data_inflation2,'display','n/a','n/a')
-#data_inflation2 = ap.select(data_inflation2,'retype','Year - 2012','number')
-#ap.select(data_inflation2,'display','n/a','n/a')
-#data_inflation2 = ap.select(data_inflation2,'retype','Year - 2012','text')
-#data_inflation2 = ap.select(data_inflation2,'keep',['Country','2011','Year - 2012'],'n/a')
-#ap.select(data_inflation2,'display','n/a','n/a')
-#ap.select(data_inflation,'display','n/a','n/a')
 
 # rename #
 data_inflation2 = ap.select(data_inflation, 'rename','Year - 2011','2011')
@@ -51,7 +37,6 @@ data_inflation2 = ap.select(data_inflation2,'rename','Year - 2016','2016')
 data_inflation2 = ap.select(data_inflation2,'rename','Year - 2017','2017')
 data_inflation2 = ap.select(data_inflation2,'rename','Year - 2018','2018')
 ap.select(data_inflation2,'display','n/a','n/a')
-#ap.outputdata(data_inflation2,'csv','../3. Output/inflation2.csv','|')
 
 # transpose #
 data_inflation3 = ap.transpose(data_inflation2,['Country'],['2011','2012','2013','2014','2015','2016','2017','2018'])
@@ -63,17 +48,16 @@ ap.select(data_inflation4,'display','n/a','n/a')
 ap.browse(data_inflation4,'all')
 
 ## crosstab #
-#data_inflation5 = ap.crosstab(data_inflation4,['Country'],['Year'],['Inflation'],np.mean)
-#ap.browse(data_inflation5,'all')
-#ap.select(data_inflation5,'display','n/a','n/a')
-##ap.outputdata(data_inflation5,'csv','../3. Output/inflation5.csv','|')
+data_inflation5 = ap.crosstab(data_inflation4,['Country'],['Year'],['Inflation'],np.mean)
+ap.browse(data_inflation5,'all')
+ap.select(data_inflation5,'display','n/a','n/a')
+ap.outputdata(data_inflation5,'csv','../3. Output/inflation5.csv','|')
 
 
 # Immo data #
 #############
 
 # format #
-#ap.select(data_immo,'display','n/a','n/a')
 data_immo2 = ap.select(data_immo,'retype','CD_YEAR','text')
 data_immo2 = ap.select(data_immo2,'retype','CD_REFNIS','text')
 ap.select(data_immo2,'display','n/a','n/a')
@@ -89,14 +73,14 @@ data_merge = ap.select(data_merge,'keep',['CD_COUNTRY','CD_YEAR','CD_TYPE_FR','M
 ap.select(data_merge,'display','n/a','n/a')
 
 ## union #
-#dataframe_1 = data_merge
-#dataframe_2 = ap.select(data_merge,'keep',['CD_COUNTRY','CD_YEAR'],'n/a')
-#dataframe_2['new column'] = dataframe_2['CD_COUNTRY']
-#dataframe_3 = ap.union(dataframe_1,dataframe_2)
-#ap.select(dataframe_1,'display','n/a','n/a')
-#ap.select(dataframe_2,'display','n/a','n/a')
-#ap.select(dataframe_3,'display','n/a','n/a')
-#ap.browse(dataframe_3,'all')
+dataframe_1 = data_merge
+dataframe_2 = ap.select(data_merge,'keep',['CD_COUNTRY','CD_YEAR'],'n/a')
+dataframe_2['new column'] = dataframe_2['CD_COUNTRY']
+dataframe_3 = ap.union(dataframe_1,dataframe_2)
+ap.select(dataframe_1,'display','n/a','n/a')
+ap.select(dataframe_2,'display','n/a','n/a')
+ap.select(dataframe_3,'display','n/a','n/a')
+ap.browse(dataframe_3,'all')
 
 # sort #
 ap.browse(data_immo2,'all')
@@ -129,6 +113,6 @@ ap.select(data_drop,'display','n/a','n/a')
 # Save data #
 #############
 
-#ap.outputdata(data_inflation,'xlsx','../3. Output/inflation.xlsx','Sheet1')
-#ap.outputdata(data_inflation,'csv','../3. Output/inflation.csv','|')
-#ap.outputdata(data_inflation,'csv','../3. Output/immo_data.csv','|')
+ap.outputdata(data_inflation,'xlsx','../3. Output/inflation.xlsx','Sheet1')
+ap.outputdata(data_inflation,'csv','../3. Output/inflation.csv','|')
+ap.outputdata(data_inflation,'csv','../3. Output/immo_data.csv','|')

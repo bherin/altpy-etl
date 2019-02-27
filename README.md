@@ -4,7 +4,7 @@ AltPy ETL is a layer of abstraction on top of Pandas, whose goal is to simplify 
 
 The AltPy library requires only 1 file: altpy.py
 
-We also provide an example of application (run_altpy.py). As we are currently working on deploying altpy-etl on pypi.org to make it pip available, you need to copy-past the altpy.py next to the run_altpy.py
+We also provide an example of application (run_altpy.py). As we are currently working on deploying altpy-etl on pypi.org to make it pip available, you might want to copy-past the altpy.py file next to the run_altpy.py file to execute it.
 
 Functions available:
 

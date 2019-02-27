@@ -1,14 +1,12 @@
-## AltPy Python library
+## AltPy ETL
 
-Python library one level above Pandas - one line instructions for data transformation
+AltPy ETL is a layer of abstraction on top of Pandas, whose goal is to simplify building data ETL processes in Python and reduce the code complexity.
 
-2 codes:
-1. altpy.py = source library
-2. run_altpy.py = demo data transformation code leveraging the altpy.py library
+The AltPy library requires only 1 file: altpy.py
 
-To run the code: python run_altpy.py
+We also provide an example of application (run_altpy.py). As we are currently working on deploying altpy-etl on pypi.org to make it pip available, you need to copy-past the altpy.py next to the run_altpy.py
 
-Modules available:
+Functions available:
 
 - inputdata (xlsx, csv)
 - outputdata (xlsx, csv)

@@ -2,17 +2,13 @@
 
 import pandas as pd
 import numpy as np
-#import prettypandas
-#import datetime
-
-#https://jakevdp.github.io/PythonDataScienceHandbook/03.12-performance-eval-and-query.html
 
 pd.options.mode.chained_assignment = None
 
 #######################
 # Library description #
 #######################
-# This library is a layer above the pandas Library,
+# This library is a layer of abstraction above the Pandas Library,
 # whose purpose is to save data analyst's/scientist's
 # time by abstracting further the typical steps
 # required in Extract-Transform-Load (ETL) processes.
@@ -362,6 +358,7 @@ def filter(dataframe,rules,output):
 # Output:
 # [dataframe] calc_df: dataframe with calculated column
 # Documentation:
+# https://jakevdp.github.io/PythonDataScienceHandbook/03.12-performance-eval-and-query.html
 
 def formula(dataframe,formula,column):
     print '\n','Formula','\n','-------'
@@ -461,9 +458,3 @@ def summarize(dataframe,group_fields,value_fields,aggreg_methods):
     return summarize_df
 
     # add functionality where rename columns
-
-
-
-
-
-# Program end #

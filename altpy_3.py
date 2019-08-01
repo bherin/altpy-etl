@@ -283,7 +283,7 @@ def union(dataframe_1,dataframe_2):
     print('\n','Union','\n','-----')
     print('datasets have been union')
 
-    union_df = dataframe_1.append(dataframe_2, ignore_index='true')
+    union_df = dataframe_1.append(dataframe_2, ignore_index='true', sort=True)
     return union_df
 
 

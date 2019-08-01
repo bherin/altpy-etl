@@ -6,6 +6,8 @@ The AltPy library requires only 1 file: altpy.py
 
 We also provide an example of application (run_altpy.py). As we are currently working on deploying altpy-etl on pypi.org to make it pip available, you might want to copy-past the altpy.py file next to the run_altpy.py file to execute it.
 
+2 versions of the library exist: altpy_2.py (for Python 2.x), and altpy_3.py (for Python 3.x)
+
 Functions available:
 
 - inputdata (xlsx, csv)

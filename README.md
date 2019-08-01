@@ -8,6 +8,11 @@ We also provide an example of application (run_altpy.py). As we are currently wo
 
 2 versions of the library exist: altpy_2.py (for Python 2.x), and altpy_3.py (for Python 3.x)
 
+Required libraries:
+- pandas
+- xlrd
+- xlsxwriter
+
 Functions available:
 
 - inputdata (xlsx, csv)

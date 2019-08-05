@@ -437,7 +437,6 @@ def crosstab(dataframe,group_fields,column_fields,value_fields,aggreg_method):
 
 def summarize(dataframe,group_fields,value_fields,aggreg_methods):
     print('\n','Summarize','\n','---------')
-    print(value_fields,'have been grouped along the',group_fields,'dimension(s)')
 
     aggreg_methods_cleaned = []
     for item in aggreg_methods:
@@ -448,13 +447,19 @@ def summarize(dataframe,group_fields,value_fields,aggreg_methods):
         elif item == 'median':
             aggreg_methods_cleaned.append(np.median)
         else:
-            print('error')
+            aggreg_methods_cleaned.append('N/A')
 
     aggreg_methods_final = dict(zip(value_fields, aggreg_methods_cleaned))
 
-    summarize_df = pd.pivot_table(dataframe,index=group_fields,values=value_fields,aggfunc=aggreg_methods_final)
-    summarize_df = summarize_df.rename_axis(None, axis=1)
-    summarize_df = summarize_df.reset_index()
-    return summarize_df
+    if value_fields[0] != '':
+        print(value_fields, 'have been grouped along the', group_fields, 'dimension(s)')
+        summarize_df = pd.pivot_table(dataframe,index=group_fields,values=value_fields,aggfunc=aggreg_methods_final)
+        summarize_df = summarize_df.rename_axis(None, axis=1)
+        summarize_df = summarize_df.reset_index()
+        return summarize_df
+    else:
+        print('grouping along the', group_fields, 'dimension(s) only')
+        summarize_df = dataframe.groupby(group_fields).size().reset_index().rename(columns={0: 'count'}).drop(['count'], axis=1)
+        return summarize_df
 
     # add functionality where rename columns
